@@ -10,7 +10,7 @@ import pong.game
 
 class PongServer(threading.Thread, socket.socket):
     BUFFER_SIZE = 4096
-    DEFAULT_PORT = 10939
+    DEFAULT_PORT = 6666
     COMMAND_CLIENT_CONNECT = 'pong_connect'
     TIMEOUT = 2.0
     COMMAND_RATE = 60   # updates per second
@@ -21,7 +21,7 @@ class PongServer(threading.Thread, socket.socket):
 
         self.port = self.DEFAULT_PORT if port is None else port
         # self.settimeout(self.TIMEOUT)
-        self.bind(('', self.port))
+        self.bind(('172.15.1.155', self.port))
         self.clients = []
         self.player_addresses = dict()
         self._current_player_to_assign = 1
